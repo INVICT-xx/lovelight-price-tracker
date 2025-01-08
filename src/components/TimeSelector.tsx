@@ -4,6 +4,8 @@ import { cn } from "../lib/utils";
 const periods = [
   { label: 'Last Hour', value: '1h' },
   { label: 'Last 24 Hours', value: '24h' },
+  { label: 'Last 48 Hours', value: '48h' },
+  { label: 'Last Week', value: '1w' },
   { label: 'Last 30 Days', value: '30d' },
   { label: 'Last Year', value: '1y' },
 ];

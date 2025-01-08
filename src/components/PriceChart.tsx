@@ -20,6 +20,10 @@ export const PriceChart = ({ data, period, isLoading }: PriceChartProps) => {
         return format(date, 'HH:mm');
       case '24h':
         return format(date, 'HH:mm');
+      case '48h':
+        return format(date, 'MM/dd HH:mm');
+      case '1w':
+        return format(date, 'EEE');
       case '30d':
         return format(date, 'MMM dd');
       case '1y':

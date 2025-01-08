@@ -8,7 +8,7 @@ export const fetchPriceData = async () => {
   try {
     const response = await axios.get(`${PROXY_URL}${API_URL}?type=5minutefeed`);
     return response.data.map((item: any) => ({
-      timestamp: new Date(item.millisUTC).toISOString(),
+      timestamp: new Date(item.millisUTC * 1).toISOString(), // Fix: multiply by 1 to ensure number conversion
       price: parseFloat(item.price),
     }));
   } catch (error) {

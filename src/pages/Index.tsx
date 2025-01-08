@@ -7,7 +7,7 @@ import { useToast } from '../components/ui/use-toast';
 import { Card } from '../components/ui/card';
 
 const Index = () => {
-  const [selectedPeriod, setSelectedPeriod] = useState('1h');
+  const [selectedPeriod, setSelectedPeriod] = useState('24h');
   const [priceData, setPriceData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const { toast } = useToast();
@@ -23,6 +23,7 @@ const Index = () => {
         description: "Please try again later",
         variant: "destructive",
       });
+      console.error('Error fetching price data:', error);
     } finally {
       setIsLoading(false);
     }
@@ -30,7 +31,7 @@ const Index = () => {
 
   useEffect(() => {
     loadData();
-    const interval = setInterval(loadData, 5 * 60 * 1000); // Refresh every 5 minutes
+    const interval = setInterval(loadData, 5 * 60 * 1000); // Poll every 5 minutes
     return () => clearInterval(interval);
   }, []);
 

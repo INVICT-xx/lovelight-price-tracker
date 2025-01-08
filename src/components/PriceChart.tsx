@@ -33,10 +33,15 @@ export const PriceChart = ({ data, period, isLoading }: PriceChartProps) => {
     }
   };
 
+  // Sort data by timestamp in ascending order
+  const sortedData = [...data].sort((a, b) => {
+    return new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime();
+  });
+
   return (
     <div className="w-full h-[300px]">
       <ResponsiveContainer>
-        <LineChart data={data}>
+        <LineChart data={sortedData}>
           <CartesianGrid strokeDasharray="3 3" stroke="#374151" opacity={0.2} />
           <XAxis
             dataKey="timestamp"
